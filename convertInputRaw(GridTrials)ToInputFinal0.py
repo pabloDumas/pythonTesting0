@@ -15,4 +15,4 @@ read1='print('+read1+'''sep='\\n\')'''
 print(read1)#printing printKwargAndValues to include in grid (after last 'for...')
 read2=re.sub('(\w+),','\g<1>=\g<1>0,',read2)
 print(read2)#printing printFunctionCallWithKwargAndValues to include in grid (after last 'for...')
-#python "C:\Users\pdumas\Downloads\Github\pythonTesting0\convertInputRaw(GridTrials)ToInputFinal.py"#call for pasting into cmd.exe or equivalent for quick running of this script
+#python "C:\Users\pdumas\Downloads\Github\pythonTesting0\convertInputRaw(GridTrials)ToInputFinal0.py"#call for pasting into cmd.exe or equivalent for quick running of this script
