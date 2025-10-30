@@ -72,7 +72,6 @@ def top20_table(query, out_dir=None):
         url = f"https://www.youtube.com/watch?v={vid}"
         views = safe_int(st.get("viewCount"))
         likes = safe_int(st.get("likeCount"))  # may be NaN if not provided
-        # views-to-likes ratio: views / likes
         if pd.isna(likes) or likes == 0:
             v2l = np.nan
         else:
@@ -87,10 +86,17 @@ def top20_table(query, out_dir=None):
         })
 
     df = pd.DataFrame(rows)
-    # Optional: make numeric columns proper dtype
     df["views"] = pd.to_numeric(df["views"], errors="coerce")
     df["likes"] = pd.to_numeric(df["likes"], errors="coerce")
     df["view_to_like_ratio"] = pd.to_numeric(df["view_to_like_ratio"], errors="coerce")
+
+    # 🚩 Sort by highest view_to_like_ratio (NaN last)
+    df = df.sort_values(
+        by="view_to_like_ratio",
+        ascending=False,
+        na_position="last",
+        kind="mergesort"
+    ).reset_index(drop=True)
 
     # Save CSV (default: temp dir), filename includes keyword + timestamp
     if out_dir is None:
@@ -103,7 +109,6 @@ def top20_table(query, out_dir=None):
     return df, fpath
 
 if __name__ == "__main__":
-    # Example usage:
     QUERY = "flow state"  # <- replace with your keyword
     table, csv_path = top20_table(QUERY)
     print(table)
