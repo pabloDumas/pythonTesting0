@@ -104,7 +104,7 @@ def top20_table(query, out_dir=None):
 
 if __name__ == "__main__":
     # Example usage:
-    QUERY = "machine learning tutorials"  # <- replace with your keyword
+    QUERY = "flow state"  # <- replace with your keyword
     table, csv_path = top20_table(QUERY)
     print(table)
     print("\nSaved to:", csv_path)
