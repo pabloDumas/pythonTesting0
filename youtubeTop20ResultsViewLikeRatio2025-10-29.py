@@ -109,7 +109,7 @@ def top20_table(query, out_dir=None):
     return df, fpath
 
 if __name__ == "__main__":
-    QUERY = "How to sleep quick and deep"  # <- replace with your keyword
+    QUERY = "transfer between brokers"  # <- replace with your keyword
     table, csv_path = top20_table(QUERY)
     print(table)
     print("\nSaved to:", csv_path)
