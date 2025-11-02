@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import re
 import json
@@ -7,6 +8,7 @@ import tempfile
 import requests
 import numpy as np
 import pandas as pd
+import argparse
 from urllib.parse import urlencode
 
 # --------- Config ----------
@@ -90,7 +92,7 @@ def top20_table(query, out_dir=None):
     df["likes"] = pd.to_numeric(df["likes"], errors="coerce")
     df["view_to_like_ratio"] = pd.to_numeric(df["view_to_like_ratio"], errors="coerce")
 
-    # 🚩 Sort by highest view_to_like_ratio (NaN last)
+    # Sort by highest view_to_like_ratio (NaN last)
     df = df.sort_values(
         by="view_to_like_ratio",
         ascending=False,
@@ -108,8 +110,14 @@ def top20_table(query, out_dir=None):
 
     return df, fpath
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Fetch top YouTube videos for a query and save a CSV.")
+    parser.add_argument("query", help="YouTube search query (quote it if it has spaces)")
+    parser.add_argument("--out-dir", default=None, help="Directory to save CSV (default: system temp dir)")
+    return parser.parse_args()
+
 if __name__ == "__main__":
-    QUERY = "transfer between brokers"  # <- replace with your keyword
-    table, csv_path = top20_table(QUERY)
+    args = parse_args()
+    table, csv_path = top20_table(args.query, args.out_dir)
     print(table)
     print("\nSaved to:", csv_path)
