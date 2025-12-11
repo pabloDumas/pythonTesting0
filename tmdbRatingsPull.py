@@ -6,7 +6,7 @@ import csv
 API_KEY = os.getenv("TMDB_API_KEY")
 if not API_KEY:
     raise RuntimeError(
-        "TMDb API key not found. Please set the environment variable 'tmdb__api__key'."
+        "TMDb API key not found. Please set the environment variable 'TMDB_API_KEY'."
     )
 
 COUNTRY = "US"
