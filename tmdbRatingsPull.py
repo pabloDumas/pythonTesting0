@@ -3,7 +3,7 @@ import requests
 import csv
 
 # Read TMDb API key from environment variable
-API_KEY = os.getenv("tmdb__api__key")
+API_KEY = os.getenv("TMDB_API_KEY")
 if not API_KEY:
     raise RuntimeError(
         "TMDb API key not found. Please set the environment variable 'tmdb__api__key'."
