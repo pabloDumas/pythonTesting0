@@ -1,0 +1,8 @@
+{
+  "name": "Universal Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+
+  "containerEnv": {
+    "tmdb__api__key": "${localEnv:TMDB_API_KEY}"
+  }
+}
