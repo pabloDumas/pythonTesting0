@@ -1,4 +1,4 @@
-#python "C:\Users\pablodumas\OneDrive - KPMG\a\2026-10-21T14-24-00.youtubeSearch.videoComments.tkinterGUI.py"
+#python "C:\Users\pablo\OneDrive\Documents\2026-10-21T14-24-00.youtubeSearch.videoComments.tkinterGUI.py"
 """
 2026-10-21T15-04-05. Will not work in GitHub Code Spaces unless you install a GUI. 
 YouTube keyword search -> top X videos -> metadata + all comments -> one text file.
